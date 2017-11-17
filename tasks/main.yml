@@ -32,11 +32,11 @@
 - include_vars: apache-24.yml
   when: "apache_version.split('.')[1] == '4'"
 
-# Configure Apache.
-- include_tasks: "configure-{{ ansible_os_family }}.yml"
-
 - name: Ensure Apache has selected state and enabled on boot.
   service:
     name: "{{ apache_service }}"
     state: "{{ apache_state }}"
     enabled: yes
+
+# Configure Apache.
+- include_tasks: "configure-{{ ansible_os_family }}.yml"
