@@ -3,3 +3,5 @@
   service:
     name: "{{ apache_service }}"
     state: "{{ apache_restart_state }}"
+  become: yes
+  become_user: "{{ apache_restart_user }}"
